@@ -24,7 +24,7 @@ async function connect() {
         }
         // Wait for the HID connection to open.
 	    await device.open();
-        document.getElementById("deviceStatus").innerText = device.productName + "に接続しました。";
+        document.getElementById("deviceStatus").innerText = "ミュウロボに接続しました。";
         document.getElementById("btnConnect").classList.add("connected");
         document.getElementById("btnDownload").style.opacity = "1.0";
     } catch (error) {
@@ -40,7 +40,7 @@ function handleDisconnectedDevice(e) {
     console.log("Device disconnected: " + e.device.productName);
 
     device = undefined;
-    document.getElementById("deviceStatus").innerText = "接続されていません。";
+    document.getElementById("deviceStatus").innerText = "ミュウロボに接続されていません。";
     document.getElementById("btnConnect").classList.remove("connected");
     document.getElementById("btnDownload").style.opacity = "0.4";
 }

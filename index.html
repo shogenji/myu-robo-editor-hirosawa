@@ -16,7 +16,7 @@
   <!-- <script src="./js/dialog-polyfill.js"></script> -->
 
 
-  <title>MYUロボ エディタ</title>
+  <title>ミュウロボ エディタ - 広沢小学校</title>
 
 </head>
 <body>
@@ -25,7 +25,7 @@
     </style>
          
   <div id="menuArea">
-    <h1><a href="https://github.com/shogenji/myu-robo-editor">MYUロボ エディタ<span class="subtitle"> with WebHID</span></a></h1>
+    <h1><a href="https://github.com/shogenji/myu-robo-editor">ミュウロボ エディタ<span class="subtitle">for the Hirosawa Elementary School</span></a></h1>
     <p class="version">
       <span id="version">ver. 20210803</span><br>
       <span id="deviceStatus">接続されていません。</span>
@@ -33,14 +33,6 @@
   </div>
 
   <div id="mainArea">
-    <div id="commandArea">
-      <div id="commandAreaTitle">命令の言葉</div>
-      <div id="commandList">
-        <select id="selectCommand" name="selectCommand" size="100">
-        </select>
-      </div>
-      <div id="commandDescription">命令の説明が表示されます。</div>
-    </div>
 
     <!--div id="editArea" contenteditable="true">
     </div-->
@@ -48,6 +40,15 @@
     <div id="editAreaTitle">プログラム：</div>
     <div id="editAreaProgramName"><input type="text" id="inputProgramName" name="programName" required size="20" value="program.txt"></div>
       <textarea id="programTextArea" rows="4" cols="40">前進, 5&NewLine;右回り, 10&NewLine;後退, 5&NewLine;左回り, 10</textarea>
+    </div>
+
+    <div id="commandArea">
+      <div id="commandAreaTitle">命令の言葉</div>
+      <div id="commandList">
+        <select id="selectCommand" name="selectCommand" size="100">
+        </select>
+      </div>
+      <div id="commandDescription">命令の説明が表示されます。</div>
     </div>
 
     <div id="controllerArea">

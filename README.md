@@ -1,8 +1,5 @@
-# MYUロボ エディタ（WebHIDバージョン）
+# ミュウロボ エディタ（広沢小学校バージョン）
 
-[ロボット工房 スタジオ ミュウ](http://www.studiomyu.com)のMYUロボ用のWebHID版MYU-USB転送アプリです。
+広沢小学校で使用している[ロボット工房 スタジオ ミュウ](http://www.studiomyu.com)のミュウロボのプログラミングをするためのアプリです。
 
-ChromebookでMYUロボを使用するために試作したものです。
-
-https://shogenji.github.io/myu-robo-editor/
-
+https://shogenji.github.io/myu-robo-editor-hirosawa/

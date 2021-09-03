@@ -3,8 +3,8 @@ a.button {
   margin-bottom: 20px;
   padding: 5px 10px;
   display: block;
-  color: #ff0099;
-  background: #00cccc;
+  color: #f8f8f8;
+  background: #0099ff;
 
   font-size: 18pt;
   font-weight: bold;
@@ -13,7 +13,7 @@ a.button {
   white-space: nowrap;
   vertical-align: middle;
 
-  border: 2px solid #00cccc;
+  border: 2px solid #0099ff;
   border-radius: 10px;
   box-shadow: 0px 1px 3px #333333;
 }
@@ -44,8 +44,8 @@ label#lblLoadProgram {
   margin: 0;
   padding: 5px 10px;
   display: block;
-  color: #ff0099;
-  background: #00cccc;
+  color: #f8f8f8;
+  background: #0099ff;
 
   font-size: 18pt;
   font-weight: bold;
@@ -54,7 +54,7 @@ label#lblLoadProgram {
   white-space: nowrap;
   vertical-align: middle;
 
-  border: 2px solid #00cccc;
+  border: 2px solid #0099ff;
   border-radius: 10px;
   box-shadow: 0px 1px 3px #333333;
 }
