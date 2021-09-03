@@ -2,7 +2,8 @@
 a.button {
   margin-bottom: 20px;
   padding: 5px 10px;
-  display: block;
+  line-height: 1;
+  display: inline-block;
   color: #f8f8f8;
   background: #0099ff;
 
