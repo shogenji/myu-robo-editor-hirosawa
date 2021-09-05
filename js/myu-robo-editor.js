@@ -28,8 +28,8 @@ function startup() {
     objLoadProgram.addEventListener('change', loadProgram);
 
     objSelectCommand.addEventListener('change', setDescription, false);
-    // objSelectCommand.addEventListener('dblclick', addCommand, false);
-
+    objProgramTA.addEventListener('keydown', onKeydown, false);
+    
     setVersion();
     setSelectBox();
 
@@ -88,6 +88,21 @@ function setSelectBox() {
 
 function setDescription() {
     objCommandDescription.innerText = commandDictionary[objSelectCommand.value][2];
+}
+
+function onKeydown(event) {
+    if (event.keyCode != 9) {
+      return;
+    }
+
+    event.preventDefault();
+
+    let carretPosition = objProgramTA.selectionStart;
+    let carretLeft     = objProgramTA.value.substr(0, carretPosition);
+    let carretRight    = objProgramTA.value.substr(carretPosition, objProgramTA.value.length);
+
+    objProgramTA.value = carretLeft + "\t" + carretRight;
+    objProgramTA.selectionEnd = carretPosition+1;
 }
 
 
