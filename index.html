@@ -34,8 +34,6 @@
 
   <div id="mainArea">
 
-    <!--div id="editArea" contenteditable="true">
-    </div-->
     <div id="editArea">
     <div id="editAreaTitle">プログラム：</div>
     <div id="editAreaProgramName"><input type="text" id="inputProgramName" name="programName" required size="20" value="program.txt"></div>
@@ -55,23 +53,24 @@
       <div id="controllerAreaTitle"></div>
 
       <div id="controller">
-        <a id="btnConnect" class="button">接続</a>
-        <a id="btnDownload" class="button">転送</a><br>
+        <button id="btnConnect">接続</button>
+        <button id="btnDownload">転送</button><br>
         <br>
         <br>
-        <a id="btnSaveProgram" class="button">保存</a>
+        <button id="btnSaveProgram">保存</button>
         <div class="loadProgram">
           <input type="file" name="loadProgram" accept=".txt" id="btnLoadProgram">
-          <label for="btnLoadProgram" class="button" id="lblLoadProgram">読込</label>
+          <label for="btnLoadProgram" id="lblLoadProgram">読込</label>
         </div>
       </div>
 
-      <!--div id="remote-controller">
-        <input type="button" class="button" id="btnTurnLeft" value="左回り">
-        <input type="button" class="button" id="btnForward" value="前進">
-        <input type="button" class="button" id="btnTurnRight" value="右回り">
-        <input type="button" class="button" id="btnBackward" value="後退">
-      </div-->
+      <!-- <div id="remote-controller">
+        <button id="btnTurnLeft">左回り</button>
+        <button id="btnForward">前進</button>
+        <button id="btnTurnRight">右回り</button>
+        <button id="btnBackward">後退</button>
+      </div> -->
+
     </div>
 
   </div>
@@ -89,7 +88,7 @@
         <input type="number" id="inputArg2" class="argInput" name="arg2" min="0" max="255" value="0" required><br>
         <span id="arg2Description" class="argDescription">引数の説明：説明説明説明説明説明説明</span>
       </div>
-      <input type="button" class="button" id="close" value="設定する">
+      <button id="close">設定する</button>
     </div>
   </dialog>
 

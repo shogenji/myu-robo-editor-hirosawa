@@ -1,15 +1,12 @@
-
-.button {
+button {
   margin-bottom: 20px;
   padding: 5px 10px;
-  display: inline-block;
   color: #f8f8f8;
   background: #0099ff;
 
   font-family: 'M PLUS Rounded 1c', sans-serif;
   font-size: 18pt;
   font-weight: bold;
-  line-height: 1.0;
   text-align: left;
   text-decoration: none;
   white-space: nowrap;
@@ -19,17 +16,17 @@
   box-shadow: 0px 1px 3px #333333;
 }
 
-a.button::before {
+#controller button::before {
   content: "";
   display: inline-block;
   width: 40px;
   height: 40px;
-  margin: 0 10px 0 0;
+  margin: 0px 10px 0 0;
   padding: 0;
   vertical-align: middle;
 }
 
-a.button:hover {
+button:hover {
   opacity: 0.7;
   transition: 0.3s ease-out;
 }
@@ -42,6 +39,21 @@ input[type="file"] {
 
 label#lblLoadProgram {
   position: relative;
+  margin-bottom: 20px;
+  padding: 5px 10px;
+  color: #f8f8f8;
+  background: #0099ff;
+
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 18pt;
+  font-weight: bold;
+  text-align: left;
+  text-decoration: none;
+  white-space: nowrap;
+
+  border: 2px solid #0099ff;
+  border-radius: 10px;
+  box-shadow: 0px 1px 3px #333333;
 }
 
 label#lblLoadProgram:hover {
@@ -61,7 +73,7 @@ label#lblLoadProgram::after {
 
   display: none;
 
-  color: #333;
+  color: #333333;
   font-size: 14pt;
   font-weight: normal;
 }
@@ -91,23 +103,24 @@ label#lblLoadProgram::changed::after {
   float: left;
 }
 
-a#btnConnect::before {
+#btnConnect::before {
   background: url("../img/button/connect001.png") no-repeat;
   background-size: contain;
 }
 
-a#btnConnect.connected::before {
+#btnConnect.connected::before {
   background: url("../img/button/connect002.png") no-repeat;
   background-size: contain;
 }
 
 #btnDownload {
   width: calc(50% - 10px);
+  margin-right: 0px;
 
   float: left;
 }
 
-a#btnDownload::before {
+#btnDownload::before {
   background: url("../img/button/download.png") no-repeat;
   background-size: contain;
 }
@@ -119,7 +132,7 @@ a#btnDownload::before {
   float: left;
 }
 
-a#btnSaveProgram::before {
+#btnSaveProgram::before {
   background: url("../img/button/save.png") no-repeat;
   background-size: contain;
 }
@@ -138,7 +151,7 @@ label#lblLoadProgram::before {
 
 
 /* リモートコントロールボタン */
-#remote-controller .button {
+#remote-controller button {
   position: absolute;
   width: calc((100% - 20px) / 3);
   height: 50px;
@@ -165,4 +178,5 @@ label#lblLoadProgram::before {
   top: 30px;
   right: 0px;
 }
+
 
