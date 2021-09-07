@@ -257,26 +257,25 @@ window.oncontextmenu = function(event) {
 
 let argValue = new Array(3);
 
-const open = document.getElementById('open');
-const close = document.getElementById('close');
-const dialog = document.getElementById('dialog');
+const objBtnSet = document.getElementById('btnSet');
+const objDialogArg = document.getElementById('dialogArg');
 
 objSelectCommand.addEventListener('dblclick', function() {
     if (setDialogBox()) {
-        dialog.showModal();
+        objDialogArg.showModal();
     } else {
         addCommandToTextArea();
     }
 });
 
-close.addEventListener('click', function() {
+objBtnSet.addEventListener('click', function() {
     addCommandToTextArea();
-    dialog.close();
+    objDialogArg.close();
 });
 
-dialog.addEventListener('click', function(event) {
-    if (event.target === dialog) {
-        dialog.close('cancelled');
+objDialogArg.addEventListener('click', function(event) {
+    if (event.target === objDialogArg) {
+        objDialogArg.objBtnSet('cancelled');
     }
 });
 

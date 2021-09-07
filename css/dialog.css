@@ -26,23 +26,6 @@
   box-sizing: border-box; */
 }
 
-#dialogButton {
-  position: absolute;
-
-  bottom: 0px;
-
-  width: 100%;
-  height: 50px;
-
-  margin: auto;
-  display: block;
-
-  text-align: center;
-
-  /* border: 1px solid #ff0000;
-  box-sizing: border-box; */
-}
-
 .argName {
   margin: 0px;
   padding: 0px;
@@ -111,7 +94,7 @@ dialog::backdrop {
   cursor: pointer;
 }
 
-#close {
+#btnSet {
   margin: 10px auto 20px auto;
   padding: auto 10px;
 
