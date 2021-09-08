@@ -142,43 +142,19 @@
 
   document.getElementById("version").addEventListener('dblclick', test, false);
 
-  let alertMode = "music";
-  let dirtyFlag = false;
 
-  function test(e) {
+  function test() {
     // parseCommand();
-    document.getElementById('alertTitle').innerText = "プログラムを読み込みます";
-    document.getElementById('alertMessage').innerText = "プログラムを読み込みます。&NewLine;現在のプログラムは上書き（消去）されます。";
+    alertMode = "loadMusic";
+    document.getElementById('alertTitle').innerText = "音楽プログラムを読み込みます";
+    document.getElementById('alertMessage').innerText = "音楽プログラムを読み込みます！\n現在のプログラムは上書き（消去）されます。\n何の曲かわかるかな？";
     objDialogAlert.showModal();
-    // document.activeElement.blur();
   }
 
-  function loadMusic(e) {
+  function loadMusic() {
     objProgramTA.value = "電子音, 3, 39\n電子音, 3, 41\n電子音, 10, 39\n電子音, 3, 39\n電子音, 3, 41\n電子音, 6, 39\n停止, 2\n電子音, 2, 78\n電子音, 3, 39\n電子音, 3, 41\n電子音, 6, 46\n電子音, 2, 52\n電子音, 2, 59\n電子音, 8, 52\n停止, 2\n電子音, 4, 62\n電子音, 2, 52\n電子音, 10, 46\n電子音, 4, 46\n電子音, 2, 39\n電子音, 10, 34\n電子音, 4, 39\n電子音, 2, 34\n電子音, 16, 31";
   }
   
-
-  const objDialogAlert = document.getElementById('dialogAlert');
-  const objBtnOK = document.getElementById('btnOK');
-  const objBtnCancel = document.getElementById('btnCancel');
-  
-  objBtnOK.addEventListener('click', function() {
-    if (alertMode == "music") {
-      loadMusic();
-    }
-
-    objDialogAlert.close();
-  });
-
-  objBtnCancel.addEventListener('click', function() {
-    objDialogAlert.close();
-  });
-
-  objDialogAlert.addEventListener('click', function(event) {
-    if (event.target === objDialogAlert) {
-      objDialogAlert.close('cancelled');
-    }
-  });
 
   </script>
 
