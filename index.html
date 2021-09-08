@@ -49,6 +49,14 @@
       <div id="commandDescription">命令の説明が表示されます。</div>
     </div>
 
+    <!--div id="editArea" contenteditable="true">
+    </div-->
+    <div id="editArea">
+      <div id="editAreaTitle">プログラム：</div>
+      <div id="editAreaProgramName"><input type="text" id="inputProgramName" name="programName" required size="20" value="program.txt"></div>
+      <textarea id="programTextArea" rows="4" cols="40">前進, 5&NewLine;右回り, 10&NewLine;後退, 5&NewLine;左回り, 10</textarea>
+    </div>
+
     <div id="controllerArea">
       <div id="controllerAreaTitle"></div>
 
@@ -77,7 +85,7 @@
 
 	<dialog id="dialogArg">
     <div class="dialog-content">
-     <div id="arg1">
+      <div id="arg1">
         <span id="arg1Name" class="argName">1つ目の引数</span>
         <input type="number" id="inputArg1" class="argInput" name="arg1" min="0" max="255" value="0" required><br>
         <span id="arg1Description" class="argDescription">引数の説明：説明説明説明説明説明説明</span>
@@ -91,23 +99,60 @@
     </div>
   </dialog>
 
+  <dialog id="dialogAlert">
+    <h2 id="alertTitle">警告</h2>
+    <div class="dialog-content">
+      <p id="alertMessage">警告です！</p>
+      <button id="btnOK">はい</button>
+      <button id="btnCancel">いいえ</button>
+    </div>
+  </dialog>
+
   <script src="./js/command.js"></script>
   <script src="./js/myu-robo-connection.js"></script>
   <script src="./js/myu-robo-editor.js"></script>
+  <script src="./js/myu-robo-remote.js"></script>
   <script type="text/javascript" language="javascript">
 
   document.getElementById("version").addEventListener('dblclick', test, false);
 
-  function test(e) {
-    // saveProgram();
-    loadMusic();
+  let alertMode = "music";
+  let dirtyFlag = false;
 
+  function test(e) {
+    // parseCommand();
+    document.getElementById('alertTitle').innerText = "プログラムを読み込みます";
+    document.getElementById('alertMessage').innerText = "プログラムを読み込みます。現在のプログラムは上書き（消去）されます。";
+    objDialogAlert.showModal();
+    // document.activeElement.blur();
   }
 
   function loadMusic(e) {
     objProgramTA.value = "電子音, 3, 39\n電子音, 3, 41\n電子音, 10, 39\n電子音, 3, 39\n電子音, 3, 41\n電子音, 6, 39\n停止, 2\n電子音, 2, 78\n電子音, 3, 39\n電子音, 3, 41\n電子音, 6, 46\n電子音, 2, 52\n電子音, 2, 59\n電子音, 8, 52\n停止, 2\n電子音, 4, 62\n電子音, 2, 52\n電子音, 10, 46\n電子音, 4, 46\n電子音, 2, 39\n電子音, 10, 34\n電子音, 4, 39\n電子音, 2, 34\n電子音, 16, 31";
   }
   
+
+  const objDialogAlert = document.getElementById('dialogAlert');
+  const objBtnOK = document.getElementById('btnOK');
+  const objBtnCancel = document.getElementById('btnCancel');
+  
+  objBtnOK.addEventListener('click', function() {
+    if (alertMode == "music") {
+      loadMusic();
+    }
+
+    objDialogAlert.close();
+  });
+
+  objBtnCancel.addEventListener('click', function() {
+    objDialogAlert.close();
+  });
+
+  objDialogAlert.addEventListener('click', function(event) {
+    if (event.target === objDialogAlert) {
+      objDialogAlert.close('cancelled');
+    }
+  });
 
   </script>
 

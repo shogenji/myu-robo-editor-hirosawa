@@ -26,7 +26,13 @@ async function connect() {
 	    await device.open();
         document.getElementById("deviceStatus").innerText = "ミュウロボが接続されました。";
         document.getElementById("btnConnect").classList.add("connected");
+    
         document.getElementById("btnDownload").style.opacity = "1.0";
+        document.getElementById("btnForward").style.opacity = "1.0";
+        document.getElementById("btnBackward").style.opacity = "1.0";
+        document.getElementById("btnTurnLeft").style.opacity = "1.0";
+        document.getElementById("btnTurnRight").style.opacity = "1.0";
+    
     } catch (error) {
         console.error(error.name, error.message);
     }
@@ -42,7 +48,12 @@ function handleDisconnectedDevice(e) {
     device = undefined;
     document.getElementById("deviceStatus").innerText = "ミュウロボが接続されていません。";
     document.getElementById("btnConnect").classList.remove("connected");
+
     document.getElementById("btnDownload").style.opacity = "0.4";
+    document.getElementById("btnForward").style.opacity = "0.4";
+    document.getElementById("btnBackward").style.opacity = "0.4";
+    document.getElementById("btnTurnLeft").style.opacity = "0.4";
+    document.getElementById("btnTurnRight").style.opacity = "0.4";
 }
 
 function handleInputReport(e) {

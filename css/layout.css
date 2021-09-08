@@ -234,6 +234,8 @@ span#version {
   font-size: 24px;
   line-height: 140%;
   overflow: scroll;
+  
+  tab-size: 8;
 
   tab-size: 8;
 
@@ -265,7 +267,25 @@ span#version {
 
 #controller {
   width: 100%;
-  height: calc(100% - 30px - 10px);
+  height: calc(80% - 30px - 10px);
+  margin: 0px;
+  padding: 0px;
+
+  /* background-color: #f8f8f8; */
+
+  color: #333333;
+  font-size: 18px;
+  line-height: 140%;
+
+  /* border: 2px solid #00cccc;
+  box-sizing: border-box;
+  border-radius: 5px; */
+}
+
+#remote-controller {
+  position: relative;
+  width: 100%;
+  height: 20%;
   margin: 0px;
   padding: 0px;
 
