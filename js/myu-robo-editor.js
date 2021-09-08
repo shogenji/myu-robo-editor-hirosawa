@@ -238,8 +238,10 @@ function clearFilePath() {
 function loadProgram() {
     for (file of objLoadProgram.files) {
         alertMode = "loadProgram";
-        document.getElementById('alertTitle').innerText = "プログラムを読み込みます";
-        document.getElementById('alertMessage').innerText = "プログラムを読み込みます。\n現在のプログラムは消去されます。";
+        document.getElementById('alertTitle').innerText = "";
+        document.getElementById('alertMessage').innerText = "プログラムを読み込みますか？\n（現在のプログラムは消去されます）";
+        document.getElementById('btnCancel').innerText = "やめる";
+        document.getElementById('btnOK').innerText = "読み込む";
         objDialogAlert.showModal();
     }
 }

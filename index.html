@@ -126,11 +126,11 @@
   </dialog>
 
   <dialog id="dialogAlert">
-    <h2 id="alertTitle">警告</h2>
+    <h2 id="alertTitle" style="display: none;">警告</h2>
     <div class="dialog-content">
       <p id="alertMessage">警告です！</p>
-      <button id="btnOK">はい</button>
-      <button id="btnCancel">いいえ</button>
+      <button id="btnCancel">キャンセル</button>
+      <button id="btnOK">OK</button>
     </div>
   </dialog>
 
@@ -146,8 +146,10 @@
   function test() {
     // parseCommand();
     alertMode = "loadMusic";
-    document.getElementById('alertTitle').innerText = "音楽プログラムを読み込みます";
-    document.getElementById('alertMessage').innerText = "音楽プログラムを読み込みます！\n現在のプログラムは上書き（消去）されます。\n何の曲かわかるかな？";
+    document.getElementById('alertTitle').innerText = "";
+    document.getElementById('alertMessage').innerText = "音楽プログラムを読み込みますか？\n（現在のプログラムは消去されます）";
+    document.getElementById('btnCancel').innerText = "やめる";
+    document.getElementById('btnOK').innerText = "読み込む";
     objDialogAlert.showModal();
   }
 
