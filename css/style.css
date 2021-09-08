@@ -32,6 +32,9 @@ button:hover {
   transition: 0.3s ease-out;
 }
 
+button:focus {
+  outline: none;
+}
 
 /* ファイル読込ボタン */
 input[type="file"] {

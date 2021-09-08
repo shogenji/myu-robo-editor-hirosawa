@@ -275,7 +275,7 @@ objBtnSet.addEventListener('click', function() {
 
 objDialogArg.addEventListener('click', function(event) {
     if (event.target === objDialogArg) {
-        objDialogArg.objBtnSet('cancelled');
+        objDialogArg.close('cancelled');
     }
 });
 
