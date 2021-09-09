@@ -93,7 +93,17 @@ function setSelectBox() {
 }
 
 function setDescription() {
-    objCommandDescription.innerText = commandDictionary[objSelectCommand.value][2];
+    command = objSelectCommand.value;
+
+    let description = commandDictionary[command][2];
+    if (commandDictionary[command][1] == 2) {
+        description = description + '\n【' + commandDictionary[command][3]['note'] + '】';
+    }
+    if (commandDictionary[command][1] == 3) {
+        description = description + '\n【' + commandDictionary[command][4]['note'] + '】';
+    }
+
+    objCommandDescription.innerText = description;
 }
 
 function onKeydown(event) {
