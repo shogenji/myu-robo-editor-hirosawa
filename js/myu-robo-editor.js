@@ -23,10 +23,10 @@ function startup() {
     }
 
     objConnect.addEventListener('mouseup', connect, false);
-    // btnConnect.addEventListener('touchend', connect, false);
+    btnConnect.addEventListener('touchend', connect, false);
 
     objDownload.addEventListener('mouseup', download, false);
-    // btnDownload.addEventListener('touchend', download, false);
+    btnDownload.addEventListener('touchend', download, false);
     objDownload.style.opacity = "0.4";
     
     objSaveProgram.addEventListener('mouseup', saveProgram, false);
@@ -42,7 +42,7 @@ function startup() {
     makeCommandDictionary();
     // console.log(commandDictionary);
 
-    objProgramTA.value = '進む, 5\nさがる, 5\n右回転, 10\n左回転, 10\n電子音, 2, 135\n電子音, 2, 120\n電子音, 2, 107\n電子音, 2, 101\n電子音, 2, 90\n電子音, 2, 80\n電子音, 2, 72\n電子音, 2, 68';
+    objProgramTA.value = '進む, 5\nさがる, 5\n右回転, 10\n左回転, 10\n止まる, 0\n電子音, 2, 135\n電子音, 2, 120\n電子音, 2, 107\n電子音, 2, 101\n電子音, 2, 90\n電子音, 2, 80\n電子音, 2, 72\n電子音, 2, 68';
 
     objBtnForward.addEventListener('mousedown', remoteForward, false);
     objBtnForward.addEventListener('touchstart', remoteForward, false);
