@@ -1,7 +1,9 @@
 let device;
   
-async function connect() {
+async function connect(event) {
     console.log(event.type);
+
+    event.preventDefault();
 
     if (device) {
         return;

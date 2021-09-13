@@ -23,10 +23,10 @@ function startup() {
     }
 
     objConnect.addEventListener('mouseup', connect, false);
-    btnConnect.addEventListener('touchend', connect, false);
+    // btnConnect.addEventListener('touchend', connect, false);
 
     objDownload.addEventListener('mouseup', download, false);
-    btnDownload.addEventListener('touchend', download, false);
+    // btnDownload.addEventListener('touchend', download, false);
     objDownload.style.opacity = "0.4";
     
     objSaveProgram.addEventListener('mouseup', saveProgram, false);
@@ -123,7 +123,9 @@ function onKeydown(event) {
 }
 
 
-async function download() {
+async function download(event) {
+    event.preventDefault();
+
     if (!device) return;
     
     let commandList = parseCommand();
@@ -230,7 +232,9 @@ function compileCommand(commandList) {
     return sendcode;
 }
 
-function saveProgram() {
+function saveProgram(event) {
+    event.preventDefault();
+
     const a = document.createElement('a');
     a.href = 'data:text/plain,' + encodeURIComponent(objProgramTA.value);
     a.download = document.getElementById('inputProgramName').value;
