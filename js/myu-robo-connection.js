@@ -28,10 +28,10 @@ async function connect() {
         document.getElementById("btnConnect").classList.add("connected");
     
         document.getElementById("btnDownload").style.opacity = "1.0";
-        // document.getElementById("btnForward").style.opacity = "1.0";
-        // document.getElementById("btnBackward").style.opacity = "1.0";
-        // document.getElementById("btnTurnLeft").style.opacity = "1.0";
-        // document.getElementById("btnTurnRight").style.opacity = "1.0";
+        document.getElementById("btnForward").style.opacity = "1.0";
+        document.getElementById("btnBackward").style.opacity = "1.0";
+        document.getElementById("btnTurnLeft").style.opacity = "1.0";
+        document.getElementById("btnTurnRight").style.opacity = "1.0";
     
     } catch (error) {
         console.error(error.name, error.message);
