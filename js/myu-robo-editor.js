@@ -131,7 +131,7 @@ function setDescription() {
 
 function onKeydown(event) {
     if (event.keyCode != 9) {
-      return;
+        return;
     }
 
     event.preventDefault();
@@ -148,7 +148,6 @@ function onKeydown(event) {
 async function upload(event) {
     event.preventDefault();
 
-    // if (!device) return;
     if (isConnected == false) {
         return;
     }
@@ -275,7 +274,6 @@ function downloadProgram() {
 }
 
 
-let reader = new FileReader();
 
 // 保持しているファイル名を消す
 function clearFilePath() {
@@ -283,17 +281,19 @@ function clearFilePath() {
 }
 
 function loadProgram() {
-    for (file of objBtnLoadProgram.files) {
-        alertMode = "loadProgram";
-        document.getElementById('alertTitle').innerText = "";
-        document.getElementById('alertMessage').innerText = "プログラムを読み込みますか？\n（現在のプログラムは消去されます）";
-        document.getElementById('btnCancel').innerText = "やめる";
-        document.getElementById('btnOK').innerText = "読み込む";
-        objDialogAlert.showModal();
-    }
+    alertMode = "loadProgram";
+    document.getElementById('alertTitle').innerText = "";
+    document.getElementById('alertMessage').innerText = "プログラムを読み込みますか？\n（現在のプログラムは消去されます）";
+    document.getElementById('btnCancel').innerText = "やめる";
+    document.getElementById('btnOK').innerText = "読み込む";
+    objDialogAlert.showModal();
 }
 
 function setProgram() {
+    let reader = new FileReader();
+
+    let file = objBtnLoadProgram.files[0];
+
     reader.readAsText(file, 'UTF-8');
     reader.onload = ()=> {
         objProgramTA.value = reader.result;
