@@ -1,10 +1,11 @@
 let alertMode = "loadMusic";
 let dirtyFlag = false;
+let isWebHIDSupported = true;
 
 const objSelectCommand = document.getElementById('selectCommand');
 const objProgramTA = document.getElementById('programTextArea');
 const objBtnConnect = document.getElementById('btnConnect');
-const objBtnDownload = document.getElementById('btnDownload');
+const objBtnUpload = document.getElementById('btnUpload');
 const objSaveProgram = document.getElementById('btnSaveProgram');
 const objLoadProgram = document.getElementById('btnLoadProgram');
 const objBtnForward = document.getElementById('btnForward');
@@ -13,18 +14,19 @@ const objBtnTurnLeft = document.getElementById('btnTurnLeft');
 const objBtnTurnRight = document.getElementById('btnTurnRight');
 
 
+
+
 function startup() {
     if (!("hid" in navigator)) {
+        isWebHIDSupported = false;
         document.getElementById("deviceStatus").innerText = "WebHIDに未対応です。";
-        document.getElementById("btnConnect").style.opacity = "0.4";
     }
 
     objBtnConnect.addEventListener('mouseup', connect, false);
     // objBtnConnect.addEventListener('touchend', connect, false);
 
-    objBtnDownload.addEventListener('mouseup', download, false);
-    // objBtnDownload.addEventListener('touchend', download, false);
-    objBtnDownload.style.opacity = "0.4";
+    objBtnUpload.addEventListener('mouseup', upload, false);
+    // objBtnUpload.addEventListener('touchend', upload, false);
     
     objSaveProgram.addEventListener('mouseup', saveProgram, false);
     objLoadProgram.addEventListener('click', clearFilePath);
@@ -33,41 +35,64 @@ function startup() {
     objSelectCommand.addEventListener('change', setDescription, false);
     objProgramTA.addEventListener('keydown', onKeydown, false);
     
-    setVersion();
-    setSelectBox();
-
-    makeCommandDictionary();
-    // console.log(commandDictionary);
-
-    objProgramTA.value = '進む, 5\nさがる, 5\n右回転, 5\n左回転, 5\n止まる, 0\n電子音, 3, 135\n電子音, 3, 120\n電子音, 3, 107\n';
 
     objBtnForward.addEventListener('mousedown', remoteForward, false);
     objBtnForward.addEventListener('touchstart', remoteForward, false);
     objBtnForward.addEventListener('mouseup', remoteStop, false);
     objBtnForward.addEventListener('touchend', remoteStop, false);
-    objBtnForward.style.opacity = "0.4";
     
     objBtnBackward.addEventListener('mousedown', remoteBackward, false);
     objBtnBackward.addEventListener('touchstart', remoteBackward, false);
     objBtnBackward.addEventListener('mouseup', remoteStop, false);
     objBtnBackward.addEventListener('touchend', remoteStop, false);
-    objBtnBackward.style.opacity = "0.4";
 
     objBtnTurnLeft.addEventListener('mousedown', remoteTurnLeft, false);
     objBtnTurnLeft.addEventListener('touchstart', remoteTurnLeft, false);
     objBtnTurnLeft.addEventListener('mouseup', remoteStop, false);
     objBtnTurnLeft.addEventListener('touchend', remoteStop, false);
-    objBtnTurnLeft.style.opacity = "0.4";
 
     objBtnTurnRight.addEventListener('mousedown', remoteTurnRight, false);
     objBtnTurnRight.addEventListener('touchstart', remoteTurnRight, false);
     objBtnTurnRight.addEventListener('mouseup', remoteStop, false);
     objBtnTurnRight.addEventListener('touchend', remoteStop, false);
-    objBtnTurnRight.style.opacity = "0.4";
+
+
+    setVersion();
+    setSelectBox();
+    setButtonStyle();
+
+    makeCommandDictionary();
+    // console.log(commandDictionary);
+
+    objProgramTA.value = '進む, 5\nさがる, 5\n右回転, 5\n左回転, 5\n止まる, 0\n電子音, 3, 135\n電子音, 3, 120\n電子音, 3, 107\n';
 }
 
 document.addEventListener("DOMContentLoaded", startup);
 
+function setButtonStyle() {
+    if (!isWebHIDSupported) {
+        objBtnConnect.style.opacity = "0.4";
+    }
+
+    if (isConnected) {
+        objBtnConnect.classList.add("connected");
+
+        objBtnUpload.style.opacity = "1.0";
+        objBtnForward.style.opacity = "1.0";
+        objBtnBackward.style.opacity = "1.0";
+        objBtnTurnLeft.style.opacity = "1.0";
+        objBtnTurnRight.style.opacity = "1.0";
+
+    } else {
+        objBtnConnect.classList.remove("connected");
+    
+        objBtnUpload.style.opacity = "0.4";
+        objBtnForward.style.opacity = "0.4";
+        objBtnBackward.style.opacity = "0.4";
+        objBtnTurnLeft.style.opacity = "0.4";
+        objBtnTurnRight.style.opacity = "0.4";
+    }
+}
 
 function setVersion() {
     let modified = new Date(document.lastModified);
@@ -120,7 +145,7 @@ function onKeydown(event) {
 }
 
 
-async function download(event) {
+async function upload(event) {
     event.preventDefault();
 
     // if (!device) return;

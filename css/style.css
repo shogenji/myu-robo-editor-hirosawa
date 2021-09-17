@@ -127,15 +127,15 @@ label#lblLoadProgram::changed::after {
   background-size: contain;
 }
 
-#btnDownload {
+#btnUpload {
   width: calc(50% - 10px);
   margin-right: 0px;
 
   float: left;
 }
 
-#btnDownload::before {
-  background: url("../img/button/download.png") no-repeat;
+#btnUpload::before {
+  background: url("../img/button/upload.png") no-repeat;
   background-size: contain;
 }
 
