@@ -2,11 +2,9 @@ let alertMode = "loadMusic";
 let dirtyFlag = false;
 
 const objSelectCommand = document.getElementById('selectCommand');
-const objEditArea = document.getElementById('editArea');
 const objProgramTA = document.getElementById('programTextArea');
-const objVersion = document.getElementById("version");
-const objConnect = document.getElementById('btnConnect');
-const objDownload = document.getElementById('btnDownload');
+const objBtnConnect = document.getElementById('btnConnect');
+const objBtnDownload = document.getElementById('btnDownload');
 const objSaveProgram = document.getElementById('btnSaveProgram');
 const objLoadProgram = document.getElementById('btnLoadProgram');
 const objBtnForward = document.getElementById('btnForward');
@@ -21,12 +19,12 @@ function startup() {
         document.getElementById("btnConnect").style.opacity = "0.4";
     }
 
-    objConnect.addEventListener('mouseup', connect, false);
-    // btnConnect.addEventListener('touchend', connect, false);
+    objBtnConnect.addEventListener('mouseup', connect, false);
+    // objBtnConnect.addEventListener('touchend', connect, false);
 
-    objDownload.addEventListener('mouseup', download, false);
-    // btnDownload.addEventListener('touchend', download, false);
-    objDownload.style.opacity = "0.4";
+    objBtnDownload.addEventListener('mouseup', download, false);
+    // objBtnDownload.addEventListener('touchend', download, false);
+    objBtnDownload.style.opacity = "0.4";
     
     objSaveProgram.addEventListener('mouseup', saveProgram, false);
     objLoadProgram.addEventListener('click', clearFilePath);
