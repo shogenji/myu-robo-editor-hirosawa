@@ -52,11 +52,32 @@
                                  ....::...                                  
 -->
 
+<script src="./js/command.js"></script>
+<script src="./js/myu-robo-connection.js"></script>
+<script src="./js/myu-robo-editor.js"></script>
+<script src="./js/myu-robo-remote.js"></script>
+
+<script type="text/javascript" language="javascript">
+
+document.getElementById("version").addEventListener('dblclick', test, false);
+
+function test() {
+  alertMode = "loadMusic";
+  document.getElementById('alertTitle').innerText = "";
+  document.getElementById('alertMessage').innerText = "音楽プログラムを読み込みますか？\n（現在のプログラムは消去されます）";
+  document.getElementById('btnCancel').innerText = "やめる";
+  document.getElementById('btnOK').innerText = "読み込む";
+  objDialogAlert.showModal();
+}
+
+function loadMusic() {
+  objProgramTA.value = "電子音, 3, 39\n電子音, 3, 41\n電子音, 10, 39\n電子音, 3, 39\n電子音, 3, 41\n電子音, 6, 39\n止まる, 2\n電子音, 2, 78\n電子音, 3, 39\n電子音, 3, 41\n電子音, 6, 46\n電子音, 2, 52\n電子音, 2, 59\n電子音, 8, 52\n止まる, 2\n電子音, 4, 62\n電子音, 2, 52\n電子音, 10, 46\n電子音, 4, 46\n電子音, 2, 39\n電子音, 10, 34\n電子音, 4, 39\n電子音, 2, 34\n電子音, 16, 31";
+}
+
+</script>
+
 </head>
 <body>
-
-  <style>
-    </style>
          
   <div id="menuArea">
     <h1>ミュウロボ エディタ<span class="subtitle">for the <a href="https://github.com/shogenji/myu-robo-editor-hirosawa">H</a>irosawa Elementary School</span></h1>
@@ -66,13 +87,16 @@
     </p>
   </div>
 
+
+
   <div id="mainArea">
 
     <div id="editArea">
       <div id="editAreaTitle">プログラム：</div>
       <div id="editAreaProgramName"><input type="text" id="inputProgramName" name="programName" required size="20" value="program.txt"></div>
-      <textarea id="programTextArea" rows="4" cols="40"></textarea>
+      <textarea id="programTextArea" rows="4" cols="40">前進, 5&NewLine;右回り, 10&NewLine;後退, 5&NewLine;左回り, 10</textarea>
     </div>
+
 
     <div id="commandArea">
       <div id="commandAreaTitle">命令の言葉</div>
@@ -83,14 +107,13 @@
       <div id="commandDescription">命令の説明が表示されます。</div>
     </div>
 
+
     <div id="controllerArea">
       <div id="controllerAreaTitle"></div>
 
       <div id="controller">
         <button id="btnConnect">接続</button>
-        <button id="btnDownload">転送</button><br>
-        <br>
-        <br>
+        <button id="btnDownload">転送</button>
         <button id="btnSaveProgram">保存</button>
         <!-- <div class="loadProgram"> -->
           <input type="file" name="loadProgram" accept=".txt" id="btnLoadProgram">
@@ -106,10 +129,11 @@
       </div>
 
     </div>
-
   </div>
 
-	<dialog id="dialogArg">
+
+
+  <dialog id="dialogArg">
     <div class="dialog-content">
       <div id="arg1">
         <span id="arg1Name" class="argName">1つ目の引数</span>
@@ -134,31 +158,6 @@
     </div>
   </dialog>
 
-  <script src="./js/command.js"></script>
-  <script src="./js/myu-robo-connection.js"></script>
-  <script src="./js/myu-robo-editor.js"></script>
-  <script src="./js/myu-robo-remote.js"></script>
-  <script type="text/javascript" language="javascript">
 
-  document.getElementById("version").addEventListener('dblclick', test, false);
-
-
-  function test() {
-    // parseCommand();
-    alertMode = "loadMusic";
-    document.getElementById('alertTitle').innerText = "";
-    document.getElementById('alertMessage').innerText = "音楽プログラムを読み込みますか？\n（現在のプログラムは消去されます）";
-    document.getElementById('btnCancel').innerText = "やめる";
-    document.getElementById('btnOK').innerText = "読み込む";
-    objDialogAlert.showModal();
-  }
-
-  function loadMusic() {
-    objProgramTA.value = "電子音, 3, 39\n電子音, 3, 41\n電子音, 10, 39\n電子音, 3, 39\n電子音, 3, 41\n電子音, 6, 39\n止まる, 2\n電子音, 2, 78\n電子音, 3, 39\n電子音, 3, 41\n電子音, 6, 46\n電子音, 2, 52\n電子音, 2, 59\n電子音, 8, 52\n止まる, 2\n電子音, 4, 62\n電子音, 2, 52\n電子音, 10, 46\n電子音, 4, 46\n電子音, 2, 39\n電子音, 10, 34\n電子音, 4, 39\n電子音, 2, 34\n電子音, 16, 31";
-  }
-  
-
-  </script>
-
-  </body>
+</body>
 </html>
