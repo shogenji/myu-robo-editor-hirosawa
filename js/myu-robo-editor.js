@@ -235,6 +235,13 @@ function compileCommand(commandList) {
 function saveProgram(event) {
     event.preventDefault();
 
+    alertMode = "saveProgram";
+    document.getElementById('alertTitle').innerText = "プログラムを保存します";
+    document.getElementById('alertMessage').innerText = "プログラム「" + document.getElementById('inputProgramName').value + "」を保存します。\n（…どこかに保存されます）";
+    objDialogAlert.showModal();
+}
+
+function downloadProgram() {
     const a = document.createElement('a');
     a.href = 'data:text/plain,' + encodeURIComponent(objProgramTA.value);
     a.download = document.getElementById('inputProgramName').value;
@@ -401,23 +408,25 @@ const objBtnOK = document.getElementById('btnOK');
 const objBtnCancel = document.getElementById('btnCancel');
 
 objBtnOK.addEventListener('click', function() {
-  if (alertMode == "loadProgram") {
-    setProgram();
-  } else if (alertMode == "loadMusic") {
-    loadMusic();
-  } 
+    if (alertMode == "loadProgram") {
+        setProgram();
+    } else if (alertMode == "saveProgram") {
+        downloadProgram();
+    } else if (alertMode == "loadMusic") {
+        loadMusic();
+    } 
 
-  objDialogAlert.close();
+    objDialogAlert.close();
 });
 
 objBtnCancel.addEventListener('click', function() {
-  objDialogAlert.close();
+    objDialogAlert.close();
 });
 
 objDialogAlert.addEventListener('click', function(event) {
-  if (event.target === objDialogAlert) {
-    objDialogAlert.close('cancelled');
-  }
+    if (event.target === objDialogAlert) {
+        objDialogAlert.close('cancelled');
+    }
 });
 
 
