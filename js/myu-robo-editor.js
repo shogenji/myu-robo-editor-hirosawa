@@ -237,7 +237,7 @@ function saveProgram(event) {
 
     alertMode = "saveProgram";
     document.getElementById('alertTitle').innerText = "プログラムを保存します";
-    document.getElementById('alertMessage').innerText = "プログラム「" + document.getElementById('inputProgramName').value + "」を保存します。\n（…どこかに保存されます）";
+    document.getElementById('alertMessage').innerText = "名前を付けてプログラムを保存します。\n（ダウンロード（要確認）に保存されます）";
     objDialogAlert.showModal();
 }
 
