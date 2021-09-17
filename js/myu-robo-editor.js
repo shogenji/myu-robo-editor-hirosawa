@@ -2,7 +2,6 @@ let alertMode = "loadMusic";
 let dirtyFlag = false;
 
 const objSelectCommand = document.getElementById('selectCommand');
-const objCommandDescription = document.getElementById('commandDescription');
 const objEditArea = document.getElementById('editArea');
 const objProgramTA = document.getElementById('programTextArea');
 const objVersion = document.getElementById("version");
@@ -104,7 +103,7 @@ function setDescription() {
         description = description + '\n【' + commandDictionary[command][4]['note'] + '】';
     }
 
-    objCommandDescription.innerText = description;
+    document.getElementById('commandDescription').innerText = description;
 }
 
 function onKeydown(event) {
