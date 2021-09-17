@@ -262,6 +262,8 @@ function saveProgram(event) {
     alertMode = "saveProgram";
     document.getElementById('alertTitle').innerText = "プログラムを保存します";
     document.getElementById('alertMessage').innerText = "名前を付けてプログラムを保存します。\n（ダウンロード（要確認）に保存されます）";
+    document.getElementById('btnCancel').innerText = "やめる";
+    document.getElementById('btnOK').innerText = "保存する";
     objDialogAlert.showModal();
 }
 
@@ -315,7 +317,8 @@ function setProgram() {
 let argValue = new Array(3);
 
 const objDialogArg = document.getElementById('dialogArg');
-const objBtnSet = document.getElementById('btnSet');
+const objBtnArgOK = document.getElementById('btnArgOK');
+const objBtnArgCancel = document.getElementById('btnArgCancel');
 
 objSelectCommand.addEventListener('dblclick', function() {
     if (setDialogBox()) {
@@ -325,9 +328,13 @@ objSelectCommand.addEventListener('dblclick', function() {
     }
 });
 
-objBtnSet.addEventListener('click', function() {
+objBtnArgOK.addEventListener('click', function() {
     addCommandToTextArea();
     objDialogArg.close();
+});
+
+objBtnArgCancel.addEventListener('click', function() {
+    objDialogArg.close('cancelled');
 });
 
 objDialogArg.addEventListener('click', function(event) {
