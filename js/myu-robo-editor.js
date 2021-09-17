@@ -422,3 +422,11 @@ objDialogAlert.addEventListener('click', function(event) {
     objDialogAlert.close('cancelled');
   }
 });
+
+
+window.oncontextmenu = function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    return false;
+};
