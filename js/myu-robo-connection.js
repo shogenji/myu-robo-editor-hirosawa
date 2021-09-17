@@ -18,17 +18,6 @@ async function connect() {
         if (!device) {  // Cancelled
             return;
         }
-        // Wait for the HID connection to open.
-	    await device.open();
-        document.getElementById("deviceStatus").innerText = "ミュウロボが接続されました。";
-        document.getElementById("btnConnect").classList.add("connected");
-    
-        document.getElementById("btnDownload").style.opacity = "1.0";
-
-        document.getElementById("btnForward").style.opacity = "1.0";
-        document.getElementById("btnBackward").style.opacity = "1.0";
-        document.getElementById("btnTurnLeft").style.opacity = "1.0";
-        document.getElementById("btnTurnRight").style.opacity = "1.0";
     } catch (error) {
         console.error(error.name, error.message);
     }
@@ -41,15 +30,11 @@ async function connect() {
         }   
     }
 
-    document.getElementById("deviceStatus").innerText = "ミュウロボが接続されました。";
-    document.getElementById("btnConnect").classList.add("connected");
-    isConnected = true;    
+    isConnected = true;
 
-    document.getElementById("btnDownload").style.opacity = "1.0";
-    document.getElementById("btnForward").style.opacity = "1.0";
-    document.getElementById("btnBackward").style.opacity = "1.0";
-    document.getElementById("btnTurnLeft").style.opacity = "1.0";
-    document.getElementById("btnTurnRight").style.opacity = "1.0";
+    document.getElementById("deviceStatus").innerText = "ミュウロボが接続されました。";
+
+    setButtonStyle();
 }
 
 async function handleConnectedDevice(e) {
@@ -60,17 +45,11 @@ async function handleConnectedDevice(e) {
 async function handleDisconnectedDevice(e) {
     console.log("Device disconnected: " + e.device.productName);
 
-    device = undefined;
-    document.getElementById("deviceStatus").innerText = "ミュウロボが接続されていません。";
-    document.getElementById("btnConnect").classList.remove("connected");
     isConnected = false;
-    
-    document.getElementById("btnDownload").style.opacity = "0.4";
 
-    document.getElementById("btnForward").style.opacity = "0.4";
-    document.getElementById("btnBackward").style.opacity = "0.4";
-    document.getElementById("btnTurnLeft").style.opacity = "0.4";
-    document.getElementById("btnTurnRight").style.opacity = "0.4";
+    document.getElementById("deviceStatus").innerText = "ミュウロボが接続されていません。";
+    
+    setButtonStyle();
 }
 
 function handleInputReport(e) {

@@ -6,8 +6,8 @@ const objSelectCommand = document.getElementById('selectCommand');
 const objProgramTA = document.getElementById('programTextArea');
 const objBtnConnect = document.getElementById('btnConnect');
 const objBtnUpload = document.getElementById('btnUpload');
-const objSaveProgram = document.getElementById('btnSaveProgram');
-const objLoadProgram = document.getElementById('btnLoadProgram');
+const objBtnSaveProgram = document.getElementById('btnSaveProgram');
+const objBtnLoadProgram = document.getElementById('btnLoadProgram');
 const objBtnForward = document.getElementById('btnForward');
 const objBtnBackward = document.getElementById('btnBackward');
 const objBtnTurnLeft = document.getElementById('btnTurnLeft');
@@ -28,9 +28,9 @@ function startup() {
     objBtnUpload.addEventListener('mouseup', upload, false);
     // objBtnUpload.addEventListener('touchend', upload, false);
     
-    objSaveProgram.addEventListener('mouseup', saveProgram, false);
-    objLoadProgram.addEventListener('click', clearFilePath);
-    objLoadProgram.addEventListener('change', loadProgram);
+    objBtnSaveProgram.addEventListener('mouseup', saveProgram, false);
+    objBtnLoadProgram.addEventListener('click', clearFilePath);
+    objBtnLoadProgram.addEventListener('change', loadProgram);
 
     objSelectCommand.addEventListener('change', setDescription, false);
     objProgramTA.addEventListener('keydown', onKeydown, false);
@@ -119,10 +119,10 @@ function setDescription() {
     command = objSelectCommand.value;
 
     let description = commandDictionary[command][2];
-    if (commandDictionary[command][1] == 2) {
+    if (commandDictionary[command][1] >= 2) {
         description = description + '\n【' + commandDictionary[command][3]['note'] + '】';
     }
-    if (commandDictionary[command][1] == 3) {
+    if (commandDictionary[command][1] >= 3) {
         description = description + '\n【' + commandDictionary[command][4]['note'] + '】';
     }
 
