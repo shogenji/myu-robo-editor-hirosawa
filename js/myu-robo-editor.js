@@ -254,11 +254,11 @@ let reader = new FileReader();
 
 // 保持しているファイル名を消す
 function clearFilePath() {
-    objLoadProgram.value = null;
+    objBtnLoadProgram.value = null;
 }
 
 function loadProgram() {
-    for (file of objLoadProgram.files) {
+    for (file of objBtnLoadProgram.files) {
         alertMode = "loadProgram";
         document.getElementById('alertTitle').innerText = "";
         document.getElementById('alertMessage').innerText = "プログラムを読み込みますか？\n（現在のプログラムは消去されます）";
@@ -273,6 +273,8 @@ function setProgram() {
     reader.onload = ()=> {
         objProgramTA.value = reader.result;
     };
+
+    document.getElementById('inputProgramName').value = file.name;
 }
 
 // 引数入力用ダイアログボックス
