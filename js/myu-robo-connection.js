@@ -41,7 +41,7 @@ async function connect() {
         }   
     }
 
-    document.getElementById("deviceStatus").innerText = device.productName + "に接続しました。";
+    document.getElementById("deviceStatus").innerText = "ミュウロボが接続されました。";
     document.getElementById("btnConnect").classList.add("connected");
     isConnected = true;    
 
