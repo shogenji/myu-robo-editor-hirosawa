@@ -98,7 +98,7 @@
         <!-- </div> -->
       </div>
 
-      <div id="remote-controller">
+      <div id="remote-controller" style="display: none;">
         <button id="btnTurnLeft">左回り</button>
         <button id="btnForward">前進</button>
         <button id="btnTurnRight">右回り</button>
@@ -144,6 +144,7 @@
   <script type="text/javascript" language="javascript">
 
     document.getElementById("version").addEventListener('dblclick', test, false);
+    document.getElementById("controllerArea").addEventListener('dblclick', showRemote, false);
     
     function test() {
       alertMode = "loadMusic";
@@ -157,6 +158,15 @@
     function loadMusic() {
       objProgramTA.value = "電子音, 3, 39\n電子音, 3, 41\n電子音, 10, 39\n電子音, 3, 39\n電子音, 3, 41\n電子音, 6, 39\n止まる, 2\n電子音, 2, 78\n電子音, 3, 39\n電子音, 3, 41\n電子音, 6, 46\n電子音, 2, 52\n電子音, 2, 59\n電子音, 8, 52\n止まる, 2\n電子音, 4, 62\n電子音, 2, 52\n電子音, 10, 46\n電子音, 4, 46\n電子音, 2, 39\n電子音, 10, 34\n電子音, 4, 39\n電子音, 2, 34\n電子音, 16, 31";
       document.getElementById('inputProgramName').value = "music.txt";
+    }
+    
+    function showRemote() {
+      objRemoteController = document.getElementById('remote-controller');
+      if (objRemoteController.style.display == "none") {
+        objRemoteController.style.display = "block";
+      } else {
+        objRemoteController.style.display = "none";
+      }
     }
     
   </script>
