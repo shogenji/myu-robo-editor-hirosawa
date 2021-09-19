@@ -461,12 +461,17 @@ objBtnOK.addEventListener('click', function() {
     switch (alertMode) {
         case 'loadProgram':
             loadProgram();
+            break;
         case 'saveProgram':
             saveProgram();
+            break;
         case 'clearProgram':
             clearProgram();
+            break;
         case 'loadMusic':
             loadMusic();
+            break;
+        default:
     }
 
     objDialogAlert.close();
