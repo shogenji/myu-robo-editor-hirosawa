@@ -8,7 +8,6 @@ let requestParams = { filters: [deviceFilter] };
 
 async function connect(event) {
     console.log(event.type);
-
     event.preventDefault();
         
     if (isConnected == true) {
@@ -42,6 +41,10 @@ async function connect(event) {
 async function handleConnectedDevice(e) {
     console.log("Device connected: " + e.device.productName);
     isConnected = true;
+
+    document.getElementById("deviceStatus").innerText = "ミュウロボが接続されました。";
+
+    setButtonStyle();
 }
 
 async function handleDisconnectedDevice(e) {

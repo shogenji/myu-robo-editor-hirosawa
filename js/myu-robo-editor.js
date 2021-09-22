@@ -23,10 +23,10 @@ function startup() {
     }
 
     objBtnConnect.addEventListener('mouseup', connect, false);
-    objBtnConnect.addEventListener('touchend', connect, false);
+    // objBtnConnect.addEventListener('touchend', connect, false);
 
     objBtnUpload.addEventListener('mouseup', upload, false);
-    objBtnUpload.addEventListener('touchend', upload, false);
+    // objBtnUpload.addEventListener('touchend', upload, false);
     
     objBtnSaveProgram.addEventListener('mouseup', onSaveProgram, false);
     objBtnLoadProgram.addEventListener('click', clearFilePath);
