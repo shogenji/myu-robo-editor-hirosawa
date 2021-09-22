@@ -282,7 +282,9 @@ function clearFilePath() {
     objBtnLoadProgram.value = null;
 }
 
-function onLoadProgram() {
+function onLoadProgram(event) {
+    event.preventDefault();
+
     alertMode = "loadProgram";
     document.getElementById('alertTitle').innerText = "";
     document.getElementById('alertMessage').innerText = "プログラムを読み込みますか？\n（現在のプログラムは消去されます）";

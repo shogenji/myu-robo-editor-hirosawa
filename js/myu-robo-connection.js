@@ -6,9 +6,11 @@ let deviceFilter = {    // Filter on devices with the MYU robo.
 };
 let requestParams = { filters: [deviceFilter] };
 
-async function connect() {
+async function connect(event) {
     console.log(event.type);
-    
+
+    event.preventDefault();
+        
     if (isConnected == true) {
         return;
     }
