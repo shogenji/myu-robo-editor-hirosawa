@@ -139,6 +139,18 @@ label#lblLoadProgram::changed::after {
   background-size: contain;
 }
 
+#btnClearProgram {
+  width: calc(50% - 10px);
+  margin-right: 20px;
+
+  /* float: left; */
+}
+
+#btnClearProgram::before {
+  background: url("../img/button/clear.png") no-repeat;
+  background-size: contain;
+}
+
 #btnSaveProgram {
   width: calc(50% - 10px);
   margin-right: 20px;

@@ -3,9 +3,11 @@ let dirtyFlag = false;
 let isWebHIDSupported = true;
 
 const objSelectCommand = document.getElementById('selectCommand');
+const objCommandDescription = document.getElementById('commandDescription');
 const objProgramTA = document.getElementById('programTextArea');
 const objBtnConnect = document.getElementById('btnConnect');
 const objBtnUpload = document.getElementById('btnUpload');
+const objBtnClearProgram = document.getElementById('btnClearProgram');
 const objBtnSaveProgram = document.getElementById('btnSaveProgram');
 const objBtnLoadProgram = document.getElementById('btnLoadProgram');
 const objBtnForward = document.getElementById('btnForward');
@@ -28,7 +30,9 @@ function startup() {
     objBtnUpload.addEventListener('mouseup', upload, false);
     // objBtnUpload.addEventListener('touchend', upload, false);
     
+    objBtnClearProgram.addEventListener('mouseup', onClearProgram, false);
     objBtnSaveProgram.addEventListener('mouseup', onSaveProgram, false);
+
     objBtnLoadProgram.addEventListener('click', clearFilePath);
     objBtnLoadProgram.addEventListener('change', onLoadProgram);
 
@@ -308,10 +312,10 @@ function loadProgram() {
 
 function onClearProgram() {
     alertMode = "clearProgram";
-    document.getElementById('alertTitle').innerText = "プログラムを消去します";
-    document.getElementById('alertMessage').innerText = "現在のプログラムを消去します。";
-    document.getElementById('btnCancel').innerText = "キャンセル";
-    document.getElementById('btnOK').innerText = "消去";
+    document.getElementById('alertTitle').innerText = "";
+    document.getElementById('alertMessage').innerText = "現在のプログラムを消去しますか？";
+    document.getElementById('btnCancel').innerText = "やめる";
+    document.getElementById('btnOK').innerText = "消去する";
     objDialogAlert.showModal();
 }
     
@@ -320,7 +324,7 @@ function clearProgram() {
 
     // document.getElementById('inputProgramName').value = file.name;
 }
-
+    
 
 // 引数入力用ダイアログボックス
 
