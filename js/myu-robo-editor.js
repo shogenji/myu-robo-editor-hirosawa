@@ -86,7 +86,6 @@ function setButtonStyle() {
         objBtnBackward.style.opacity = "1.0";
         objBtnTurnLeft.style.opacity = "1.0";
         objBtnTurnRight.style.opacity = "1.0";
-
     } else {
         objBtnConnect.classList.remove("connected");
     
@@ -157,12 +156,13 @@ async function upload(event) {
     }
     
     let commandList = parseCommand();
+    addStopCommand(commandList);
     // let sendcode = compileCommand(commandList);
 
     const waitFor = duration => new Promise(r => setTimeout(r, duration));
     
-    console.log(device.productName);
-    console.log(device.collections);
+    // console.log(device.productName);
+    // console.log(device.collections);
 
     const reportId = 0x00;
     const dataS = Uint8Array.from([  1,  16, ...Array(62).fill(255)]);
@@ -233,9 +233,33 @@ function parseCommand() {
     // commandList     = commandList.replace(/^\n/g, "");
 
     commandList = commandList.split('\n');
-    console.log(commandList);
+    // console.log(commandList);
 
     return commandList;
+}
+
+function addStopCommand(commandList) {
+    let motorFlag = false;
+
+    for (let i = 0; i < commandList.length; i++) {
+        if (commandList[i].length == 0) continue;
+
+        let commandArray = commandList[i].split(',');
+        let command = commandArray[0];
+
+        if (command in commandDictionary) {
+            if (commandDictionary[command][0] >= 1 && commandDictionary[command][0] <= 11) {
+                motorFlag = true;
+            } else if (motorFlag == true) {
+                if (commandDictionary[command][0] == 80 || commandDictionary[command][0] == 105) {
+                    commandList.splice(i, 0, '止まる,0');
+                }
+                motorFlag = false;
+            }
+        } else {
+            console.log('Line ' + String(i + 1) + ': ' + command + ' not found!');
+        }
+    }
 }
 
 function compileCommand(commandList) {
