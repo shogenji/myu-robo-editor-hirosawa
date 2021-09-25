@@ -420,9 +420,9 @@ function setDialogBox() {
     console.log(command, commandDictionary[command][1]);
     
     switch (commandDictionary[command][1]) {
-        case 1:
+        case 1: // 引数なし
             return false;
-        case 2:
+        case 2: // 引数1
             document.getElementById("arg1Name").innerText = commandDictionary[command][3]['name'];
             document.getElementById("arg1Description").innerText = commandDictionary[command][3]['note'];
             document.getElementById("inputArg1").min = commandDictionary[command][3]['min'];
@@ -441,7 +441,7 @@ function setDialogBox() {
             arg2Value = null;
             document.getElementById("arg2").style.display = "none";
             break;
-        case 3:
+        case 3: // 引数2
             document.getElementById("arg1Name").innerText = commandDictionary[command][3]['name'];
             document.getElementById("arg1Description").innerText = commandDictionary[command][3]['note'];
             document.getElementById("inputArg1").min = commandDictionary[command][3]['min'];
@@ -462,6 +462,13 @@ function setDialogBox() {
             document.getElementById("arg2Description").innerText = commandDictionary[command][4]['note'];
             document.getElementById("inputArg2").min = commandDictionary[command][4]['min'];
             document.getElementById("inputArg2").max = commandDictionary[command][4]['max'];
+            if (commandDictionary[command][4]['min'] == commandDictionary[command][4]['max']) {
+                // document.getElementById("arg2").style.display = "none";
+                document.getElementById("inputArg2").readOnly = true;
+            } else {
+                // document.getElementById("arg2").style.display = "block";
+                document.getElementById("inputArg2").readOnly = false;
+            }
             if (isNaN(argValue[2])) {
                 document.getElementById("inputArg2").value = commandDictionary[command][4]['min'];
             } else {
