@@ -156,7 +156,7 @@ async function upload(event) {
     }
     
     let commandList = parseCommand();
-    addStopCommand(commandList);
+    // addStopCommand(commandList);
     // let sendcode = compileCommand(commandList);
 
     const waitFor = duration => new Promise(r => setTimeout(r, duration));
