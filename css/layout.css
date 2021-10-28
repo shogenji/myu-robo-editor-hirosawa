@@ -143,7 +143,6 @@ span#version {
   font-weight: normal;
 
   border: 2px solid #0099ff;
-  box-sizing: border-box;
   border-radius: 5px;
 }
 
@@ -163,7 +162,6 @@ span#version {
   overflow: scroll;
 
   border: 2px solid #0099ff;
-  box-sizing: border-box;
   border-radius: 5px;
 }
 
@@ -173,8 +171,7 @@ span#version {
   height: 100%;
   padding: 10px;
 
-  /* border: 1px solid #f00;
-  box-sizing: border-box; */
+  /* border: 1px solid #f00;*/
 
   float: left;
 }
