@@ -176,6 +176,18 @@ label#lblLoadProgram::before {
 }
 
 
+#btnLoadSample::before {
+  background: url("../img/button/load.png") no-repeat;
+  background-size: contain;
+}
+
+#btnLoadSample {
+  width: 100%;
+  margin-top: 100px;
+  margin-right: 20px;
+
+  /* float: left; */
+}
 
 /* リモートコントロールボタン */
 #remote-controller button {

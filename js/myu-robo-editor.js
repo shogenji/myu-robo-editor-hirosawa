@@ -10,10 +10,15 @@ const objBtnUpload = document.getElementById('btnUpload');
 const objBtnClearProgram = document.getElementById('btnClearProgram');
 const objBtnSaveProgram = document.getElementById('btnSaveProgram');
 const objBtnLoadProgram = document.getElementById('btnLoadProgram');
+const objBtnLoadSample = document.getElementById('btnLoadSample');
+const objSelectSample = document.getElementById('selectSample');
+
 const objBtnForward = document.getElementById('btnForward');
 const objBtnBackward = document.getElementById('btnBackward');
 const objBtnTurnLeft = document.getElementById('btnTurnLeft');
 const objBtnTurnRight = document.getElementById('btnTurnRight');
+
+const objControllerArea = document.getElementById('controllerArea');
 
 
 
@@ -39,6 +44,7 @@ function startup() {
     objSelectCommand.addEventListener('change', setDescription, false);
     objProgramTA.addEventListener('keydown', onKeydown, false);
     
+    objBtnLoadSample.addEventListener('mouseup', onLoadSample, false);
 
     objBtnForward.addEventListener('mousedown', remoteForward, false);
     objBtnForward.addEventListener('touchstart', remoteForward, false);
@@ -60,10 +66,14 @@ function startup() {
     objBtnTurnRight.addEventListener('mouseup', remoteStop, false);
     objBtnTurnRight.addEventListener('touchend', remoteStop, false);
 
+    objControllerArea.addEventListener('dblclick', showSampleButton, false);
+    objControllerArea.addEventListener('dblclick', showRemote, false);
+
 
     setVersion();
     setSelectBox();
     setButtonStyle();
+    setSampleSelectBox();
 
     makeCommandDictionary();
     // console.log(commandDictionary);
@@ -502,6 +512,9 @@ objBtnOK.addEventListener('click', function() {
         case 'saveProgram':
             saveProgram();
             break;
+        case 'loadSample':
+            loadSample();
+            break;
         case 'clearProgram':
             clearProgram();
             break;
@@ -523,6 +536,75 @@ objDialogAlert.addEventListener('click', function(event) {
         objDialogAlert.close('cancelled');
     }
 });
+
+
+
+// サンプルプログラム
+function setSampleSelectBox() {
+    for (let i = 0; i < sampleData.length; i++) {
+            let objOption = document.createElement('option');
+            objOption.setAttribute('value', i);
+            objOption.text = sampleData[i][0];
+            objOption.value = sampleData[i][0];
+            objSelectSample.appendChild(objOption);
+    }
+}
+
+function onLoadSample(event) {
+    event.preventDefault();
+
+    objDialogSample.showModal();
+}
+
+function loadSample() {
+    // console.log(objSelectSample.selectedIndex);
+
+    objProgramTA.value = sampleData[objSelectSample.selectedIndex][2];
+    document.getElementById('inputProgramName').value = sampleData[objSelectSample.selectedIndex][1];
+}
+
+function showSampleButton() {
+    if (objBtnLoadSample.style.display == 'none') {
+        objBtnLoadSample.style.display = 'block';
+    } else {
+        objBtnLoadSample.style.display = 'none';
+    }
+}
+
+
+// サンプルプログラムダイアログボックス
+
+const objDialogSample = document.getElementById('dialogSample');
+const objBtnSampleOK = document.getElementById('btnSampleOK');
+const objBtnSampleCancel = document.getElementById('btnSampleCancel');
+
+objBtnSampleOK.addEventListener('click', function() {
+    if (objSelectSample.selectedIndex == -1) {
+        return;
+    } else {
+        objDialogSample.close();
+        alertMode = "loadSample";
+        document.getElementById('alertTitle').innerText = "";
+        document.getElementById('alertMessage').innerText = "プログラムを読み込みますか？\n（現在のプログラムは消去されます）";
+        document.getElementById('btnCancel').innerText = "やめる";
+        document.getElementById('btnOK').innerText = "読み込む";
+        objDialogAlert.showModal();
+    }
+});
+
+objBtnSampleCancel.addEventListener('click', function() {
+    objDialogSample.close();
+});
+
+objDialogSample.addEventListener('click', function(event) {
+    if (event.target === objDialogSample) {
+        objDialogSample.close('cancelled');
+    }
+});
+
+
+
+
 
 
 window.oncontextmenu = function(event) {

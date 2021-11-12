@@ -97,6 +97,7 @@
           <input type="file" name="loadProgram" accept=".txt" id="btnLoadProgram">
           <label for="btnLoadProgram" id="lblLoadProgram">読込</label>
         </div>
+        <button id="btnLoadSample" style="display: none;">サンプルプログラム</button>
       </div>
 
       <div id="remote-controller" style="display: none;">
@@ -137,7 +138,20 @@
     </div>
   </dialog>
 
+  <dialog id="dialogSample">
+    <h2>サンプルプログラム</h2>
+    <div class="dialog-content">
+      <div id="sampleList">
+        <select id="selectSample" name="selectSample" size="5">
+        </select>
+      </div>
+      <button id="btnSampleCancel">やめる</button>
+      <button id="btnSampleOK">読み込む</button>
+    </div>
+  </dialog>
+
   <script src="./js/command.js"></script>
+  <script src="./js/sample.js"></script>
   <script src="./js/myu-robo-connection.js"></script>
   <script src="./js/myu-robo-editor.js"></script>
   <script src="./js/myu-robo-remote.js"></script>
@@ -145,7 +159,7 @@
   <script type="text/javascript" language="javascript">
 
     document.getElementById("version").addEventListener('dblclick', test, false);
-    document.getElementById("controllerArea").addEventListener('dblclick', showRemote, false);
+    // document.getElementById("controllerArea").addEventListener('dblclick', showRemote, false);
     
     function test() {
       alertMode = "loadMusic";
