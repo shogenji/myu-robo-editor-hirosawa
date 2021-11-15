@@ -12,14 +12,15 @@ const objBtnSaveProgram = document.getElementById('btnSaveProgram');
 const objBtnLoadProgram = document.getElementById('btnLoadProgram');
 const objBtnLoadSample = document.getElementById('btnLoadSample');
 const objSelectSample = document.getElementById('selectSample');
+const objSampleTA = document.getElementById('sampleTextArea');
 
 const objBtnForward = document.getElementById('btnForward');
 const objBtnBackward = document.getElementById('btnBackward');
 const objBtnTurnLeft = document.getElementById('btnTurnLeft');
 const objBtnTurnRight = document.getElementById('btnTurnRight');
 
+const objVersion = document.getElementById('version');
 const objControllerArea = document.getElementById('controllerArea');
-
 
 
 
@@ -45,6 +46,7 @@ function startup() {
     objProgramTA.addEventListener('keydown', onKeydown, false);
     
     objBtnLoadSample.addEventListener('mouseup', onLoadSample, false);
+    objSelectSample.addEventListener('change', setSampleProgram, false);
 
     objBtnForward.addEventListener('mousedown', remoteForward, false);
     objBtnForward.addEventListener('touchstart', remoteForward, false);
@@ -66,7 +68,7 @@ function startup() {
     objBtnTurnRight.addEventListener('mouseup', remoteStop, false);
     objBtnTurnRight.addEventListener('touchend', remoteStop, false);
 
-    objControllerArea.addEventListener('dblclick', showSampleButton, false);
+    objVersion.addEventListener('dblclick', showSampleButton, false);
     objControllerArea.addEventListener('dblclick', showRemote, false);
 
 
@@ -542,12 +544,16 @@ objDialogAlert.addEventListener('click', function(event) {
 // サンプルプログラム
 function setSampleSelectBox() {
     for (let i = 0; i < sampleData.length; i++) {
-            let objOption = document.createElement('option');
-            objOption.setAttribute('value', i);
-            objOption.text = sampleData[i][0];
-            objOption.value = sampleData[i][0];
-            objSelectSample.appendChild(objOption);
+        let objOption = document.createElement('option');
+        objOption.setAttribute('value', i);
+        objOption.text = sampleData[i][0];
+        objOption.value = sampleData[i][0];
+        objSelectSample.appendChild(objOption);
     }
+}
+
+function setSampleProgram() {
+    objSampleTA.value = sampleData[objSelectSample.selectedIndex][2];
 }
 
 function onLoadSample(event) {
@@ -604,6 +610,15 @@ objDialogSample.addEventListener('click', function(event) {
 
 
 
+// リモートボタン
+function showRemote() {
+    objRemoteController = document.getElementById('remote-controller');
+    if (objRemoteController.style.display == "none") {
+        objRemoteController.style.display = "block";
+    } else {
+        objRemoteController.style.display = "none";
+    }
+}
 
 
 

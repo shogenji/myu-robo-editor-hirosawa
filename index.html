@@ -144,7 +144,8 @@
       <div id="sampleList">
         <select id="selectSample" name="selectSample" size="5">
         </select>
-      </div>
+        </div>
+      <textarea id="sampleTextArea" rows="3" readonly></textarea>
       <button id="btnSampleCancel">やめる</button>
       <button id="btnSampleOK">読み込む</button>
     </div>
@@ -157,9 +158,6 @@
   <script src="./js/myu-robo-remote.js"></script>
   
   <script type="text/javascript" language="javascript">
-
-    document.getElementById("version").addEventListener('dblclick', test, false);
-    // document.getElementById("controllerArea").addEventListener('dblclick', showRemote, false);
     
     function test() {
       alertMode = "loadMusic";
@@ -175,14 +173,6 @@
       document.getElementById('inputProgramName').value = "music.txt";
     }
     
-    function showRemote() {
-      objRemoteController = document.getElementById('remote-controller');
-      if (objRemoteController.style.display == "none") {
-        objRemoteController.style.display = "block";
-      } else {
-        objRemoteController.style.display = "none";
-      }
-    }
     
   </script>
     
